@@ -32,7 +32,7 @@ const FavoriteMoviesPage = () => {
     return q.data
   });
 
-  const toDo = () => true;
+  //const toDo = () => true;
 
   return (
     <PageTemplate
