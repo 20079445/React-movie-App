@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import { getUpcomingMovies } from "../api/tmdb-api";
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
-import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
-
+import AddToWatchListIcon from "../components/cardIcons/addToWatchList";
+import { MoviesContext } from "../contexts/moviesContext";
 
 
 const UpcomingMoviesPage = (props) => {
 
   const [upcoming, setMovies] = useState([]);
-  const favorites = upcoming.filter(m => m.favorite)
-  localStorage.setItem('favorites', JSON.stringify(favorites))
-
-  const addToFavorites = (movieId) => {
-    const updatedMovies = upcoming.map((m) =>
-      m.id === movieId ? { ...m, favorite: true } : m
-    );
-    setMovies(updatedMovies);
-  };
+  const {upcoming: movieIds } = useContext(MoviesContext);
 
 
   useEffect(() => {
@@ -43,9 +35,8 @@ return (
     <PageTemplate
       title='Upcoming Movies'
       movies={upcoming}
-      selectFavorite={addToFavorites}
-      action={(movie) => {
-        return <AddToFavoritesIcon movie={movie} />
+      action={(upcoming) => {
+        return <AddToWatchListIcon movie={upcoming} />
       }}
     />
   );
