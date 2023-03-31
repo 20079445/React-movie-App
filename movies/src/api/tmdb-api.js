@@ -84,3 +84,33 @@ export const getMovie = (args) => {
       .then((res) => res.json())
       .then((json) =>json.results);
   };
+
+  export const getTrendingMovies = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=081b3bb73ca3bac847f82802fb0db951`
+    )
+      .then((res) => res.json())
+      .then((json) =>json.results);
+  };
+  
+  export const getPersonDetails = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
+      ).then((response) => {
+        if (!response.ok) {
+          throw new Error(response.json().message);
+        }
+        return response.json();
+      })
+      .catch((error) => {
+         throw error
+      });
+  };
+
+  export const getMovieCredits = () => {
+    return fetch(
+      `https://api.themoviedb.org/3/person/{person_id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    )
+      .then((res) => res.json())
+      .then((json) =>json.results);
+  };

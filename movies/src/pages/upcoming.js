@@ -28,8 +28,10 @@ const UpcomingMoviesPage = (props) => {
   if (isError) {
     return <h1>{error.message}</h1>
   }  
-  const movies = data.results;
+  const Movies = data.results;
 
+  // const addToWatchList = Movies.filter(m => m.addToWatchList)
+  // localStorage.setItem('watchList', JSON.stringify(addToWatchList))
 
 return (
     <PageTemplate
