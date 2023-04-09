@@ -4,9 +4,14 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import { BrowserView } from 'react-device-detect';
+// import { useMediaQuery } from 'react-responsive'
+// import { AuthContext } from "../components/auth";
 
 
 const HomePage = (props) => {
+
+  // const { currentUser } = useContext(AuthContext);
 
   const {  data, error, isLoading, isError }  = useQuery('discover', getMovies)
 
@@ -24,6 +29,7 @@ const HomePage = (props) => {
   localStorage.setItem('favorites', JSON.stringify(favorites))
 
   return (
+    <BrowserView>
     <PageTemplate
       title="Discover Movies"
       movies={movies}
@@ -31,6 +37,7 @@ const HomePage = (props) => {
         return <AddToFavoritesIcon movie={movie} />
       }}
     />
+    </BrowserView>
 );
 };
 export default HomePage;

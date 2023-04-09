@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-
 import "C:/Users/jaxkm/Documents/web app/react-movie-labs/movies/src/styles.css";
+import setUsername from "../pages/signUp"
+import setPassword from "../pages/signUp"
 
 function Login() {
   // React States
@@ -20,6 +20,10 @@ function Login() {
     {
       username: "user2",
       password: "pass2"
+    },
+    {
+      setUsername,
+      setPassword
     }
   ];
 

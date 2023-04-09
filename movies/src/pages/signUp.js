@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "C:/Users/jaxkm/Documents/web app/react-movie-labs/movies/src/styles.css";
 
 const SignUp = () => {
@@ -9,7 +8,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit2 = (e) => {
         e.preventDefault();
         console.log({ email, username, password });
         setEmail("");
@@ -21,7 +20,7 @@ const SignUp = () => {
     return (
         <div className='signup__container'>
             <h2>Sign up </h2>
-            <form className='signup__form' onSubmit={handleSubmit}>
+            <form className='signup__form' onSubmit={handleSubmit2}>
                 <label htmlFor='email'>Email Address</label>
                 <input
                     type='email'
