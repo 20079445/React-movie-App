@@ -10,11 +10,11 @@ function PeopleListPageTemplate({ people, title, action }) {
   const Id = Number(idFilter);
 
   let displayedPeople = people
-    .filter((m) => {
-      return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
+    .filter((a) => {
+      return a.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
-    .filter((m) => {
-      return Id > 0 ? m.credit_ids.includes(Id) : true;
+    .filter((a) => {
+      return Id > 0 ? a.Id.includes(Id) : true;
     });
 
   const handleChange = (type, value) => {
@@ -32,10 +32,10 @@ function PeopleListPageTemplate({ people, title, action }) {
           <FilterCard
             onUserInput={handleChange}
             titleFilter={nameFilter}
-            creditFilter={idFilter}
+            idFilter={idFilter}
           />
         </Grid>
-        <PeopleList action={action} people={people}></PeopleList>
+        <PeopleList action={action} people={displayedPeople}></PeopleList>
       </Grid>
     </Grid>
   );

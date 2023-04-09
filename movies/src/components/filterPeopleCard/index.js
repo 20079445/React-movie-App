@@ -14,7 +14,6 @@ import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 import { getPersonDetails } from "../../api/tmdb-api";
 
-
 const formControl = 
   {
     margin: 1,
@@ -33,10 +32,10 @@ export default function FilterpeopleCard(props) {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const id = data.id;
-  if (id[0].name !== "All"){
-    id.unshift({ id: "0", name: "All" });
-  }
+  // const id = data.id;
+  // if (id[0].name !== "All"){
+  //   id.unshift({ id: "0", name: "All" });
+  // }
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
@@ -76,7 +75,7 @@ export default function FilterpeopleCard(props) {
     />
 
         <FormControl sx={{...formControl}}>
-          <InputLabel id="credit-label">Credit</InputLabel>
+          <InputLabel id="credit-label">Actors</InputLabel>
           <Select
             labelId="credit-label"
             id="credit-select"
@@ -85,7 +84,7 @@ export default function FilterpeopleCard(props) {
             onChange={handleCreditChange}
   >
 
-            {id.map((id) => {
+            {data.results.map((id) => {
               return (
                 <MenuItem key={id.id} value={id.id}>
                   {id.name}

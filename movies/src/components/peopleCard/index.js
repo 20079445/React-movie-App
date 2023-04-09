@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import React, {  } from "react";
-// import { MoviesContext } from "../../contexts/moviesContext";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -17,13 +16,6 @@ import Avatar from '@mui/material/Avatar';
 
 
 export default function PeopleCard({ people, action }) {
-  // const { favorites } = useContext(MoviesContext);
-
-  // if (favorites.find((id) => id === [people].id)) {
-  //   people.favorite = true;
-  // } else {
-  //   people.favorite = false
-  // }
 
   people.favorite = true;
 
@@ -39,7 +31,7 @@ export default function PeopleCard({ people, action }) {
         }
         title={
           <Typography variant="h5" component="p">
-            {people.name}{" "}
+            {people.id}{" "}
           </Typography>
         }
       />
@@ -57,25 +49,26 @@ export default function PeopleCard({ people, action }) {
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
-              {people.popularity}
+              {people.name}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
-              {"  "} {people.adult}{" "}
+              {"  "} {people.known_for_department}{" "}
             </Typography>
           </Grid>
         </Grid>
       </CardContent>
-      <CardActions disableSpacing>
-        {/* {action(people)} */}
-        <Link to={`/movies/${people.id}`}>
+        <CardActions disableSpacing>
+        <Link to={`/person/${people.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...
           </Button>
         </Link>
-      </CardActions>
+        </CardActions>
     </Card>
   );
 }
+
+
