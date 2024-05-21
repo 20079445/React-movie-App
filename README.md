@@ -1,4 +1,4 @@
-# react-movie-labs
+# react-movie-App
 # Assignment 1 - ReactJS app.
 
 Name: [John Murphy]
